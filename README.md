@@ -36,7 +36,7 @@ smart-task-management/
 │
 ├── src/
 │   └── main/
-│       ├── java/com/example/taskmanagement/
+│       ├── java/com/example/smarttaskmanagement/
 │       │   ├── model/          → Task entity (maps to MySQL table)
 │       │   ├── repository/     → JPA repository (database queries)
 │       │   ├── service/        → Business logic layer
@@ -92,7 +92,7 @@ smart-task-management/
    ```properties
    spring.datasource.url=jdbc:mysql://localhost:3306/smart_task_db
    spring.datasource.username=root
-   spring.datasource.password=YOUR_PASSWORD
+   spring.datasource.password=root321
    spring.jpa.hibernate.ddl-auto=update
    ```
 
