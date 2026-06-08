@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Smart Task Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Smart Task Management System</h1>
+
+<div class="form-container">
+  <input type="hidden" id="taskId">
+
+  <input type="text" id="title" placeholder="Task Title">
+
+  <input type="text" id="description" placeholder="Description">
+
+  <select id="priority">
+    <option value="High">High</option>
+    <option value="Medium">Medium</option>
+    <option value="Low">Low</option>
+  </select>
+
+  <select id="status">
+    <option value="Pending">Pending</option>
+    <option value="Completed">Completed</option>
+  </select>
+
+  <button onclick="saveTask()">Save Task</button>
+</div>
+
+<hr>
+
+<h2>Task List</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Priority</th>
+    <th>Status</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+
+  <tbody id="taskTableBody">
+
+  </tbody>
+
+</table>
+
+<script src="script.js"></script>
+
+</body>
+</html>
