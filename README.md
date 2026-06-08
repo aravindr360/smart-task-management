@@ -130,10 +130,14 @@ smart-task-management/
 ---
 
 ## 📸 Screenshots
-
-<img width="1468" height="298" alt="image" src="https://github.com/user-attachments/assets/7a146716-71b0-4957-9d5f-509dffdff570" />
-
-
+Empty Dashboard / Home Page
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7417faff-496b-4ae0-ba7a-4c85d0da06c7" />
+Task List with Mixed Priorities
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/45329990-2e7f-45c3-b1a0-73019e8ec350" />
+ Edit Form Filled
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0fa76382-b819-4ea9-8361-8dbfc4d796f4" />
+MySQL Workbench
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f6ed773f-5631-4f0f-9451-60ff732b812d" />
 
 ---
 
