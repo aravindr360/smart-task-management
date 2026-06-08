@@ -77,7 +77,7 @@ smart-task-management/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/smart-task-management.git
+   git clone https://github.com/aravindr360/smart-task-management.git
    cd smart-task-management
    ```
 
