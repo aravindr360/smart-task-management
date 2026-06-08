@@ -43,7 +43,6 @@ function loadTasks(){
 
         });
 }
-
 function saveTask(){
 
     const id =
@@ -64,6 +63,12 @@ function saveTask(){
         document.getElementById("status").value
     };
 
+    // 📍 PUSH STEP 3 HERE (Validation / The Bouncer)
+    if (task.title.trim() === "") {
+        alert("Title is required");
+        return; // Stops the function immediately
+    }
+
     if(id){
 
         fetch(`${API_URL}/${id}`,{
@@ -74,6 +79,8 @@ function saveTask(){
             body:JSON.stringify(task)
         })
             .then(() => {
+                // 📍 PUSH STEP 2 (Update Message) HERE
+                alert("Task updated successfully!");
                 clearForm();
                 loadTasks();
             });
@@ -88,6 +95,8 @@ function saveTask(){
             body:JSON.stringify(task)
         })
             .then(() => {
+                // 📍 PUSH STEP 2 (Save Message) HERE
+                alert("Task saved successfully!");
                 clearForm();
                 loadTasks();
             });
@@ -111,12 +120,13 @@ function editTask(
         status;
 }
 
-function deleteTask(id){
-
-    fetch(`${API_URL}/${id}`,{
-        method:"DELETE"
-    })
-        .then(() => loadTasks());
+function deleteTask(id) {
+    if (confirm("Are you sure you want to delete this task?")) {
+        fetch(`${API_URL}/${id}`, {
+            method: "DELETE"
+        })
+            .then(() => loadTasks());
+    }
 }
 
 function clearForm(){
