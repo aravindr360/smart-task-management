@@ -22,4 +22,26 @@ public class TaskService {
     public Task saveTask(Task task) {
         return taskRepository.save(task);
     }
+
+    public Task getTaskById(Long id) {
+        return taskRepository.findById(id).orElse(null);
+    }
+
+    public void deleteTask(Long id) {
+        taskRepository.deleteById(id);
+    }
+    public Task updateTask(Long id, Task updatedTask) {
+        Task task = taskRepository.findById(id).orElse(null);
+
+        if(task != null){
+            task.setTitle(updatedTask.getTitle());
+            task.setDescription(updatedTask.getDescription());
+            task.setPriority(updatedTask.getPriority());
+            task.setStatus(updatedTask.getStatus());
+
+            return taskRepository.save(task);
+        }
+
+        return null;
+    }
 }
