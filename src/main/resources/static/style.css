@@ -1,47 +1,78 @@
-body{
+body {
     font-family: Arial, sans-serif;
     margin: 30px;
 }
 
-h1{
-    color:#2c3e50;
+h1 {
+    color: #2c3e50;
 }
 
-.form-container{
-    margin-bottom:20px;
+.form-container {
+    margin-bottom: 20px;
 }
 
-input,select,button{
-    padding:10px;
-    margin:5px;
+input, select, button {
+    padding: 10px;
+    margin: 5px;
 }
 
-button{
-    background:#3498db;
-    color:white;
-    border:none;
-    border-radius:4px;
+button {
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-button:hover{
-    opacity:0.9;
+button:hover {
+    opacity: 0.9;
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-th{
-    background:#3498db;
-    color:white;
+th {
+    background: #3498db;
+    color: white;
 }
 
-table,th,td{
-    border:1px solid #ddd;
+table, th, td {
+    border: 1px solid #ddd;
 }
 
-th,td{
-    padding:12px;
-    text-align:center;
+th, td {
+    padding: 12px;
+    text-align: center;
+}
+
+/* Priority Badges */
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.badge-high   { background-color: #ef4444; }   /* Red */
+.badge-medium { background-color: #f59e0b; }   /* Orange */
+.badge-low    { background-color: #22c55e; }   /* Green */
+
+/* ✅ NEW: Status Toggle Button */
+.status-toggle-btn {
+    background: none !important;
+    color: #2c3e50 !important;
+    border: 1px dashed #3498db !important;
+    padding: 6px 12px !important;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+.status-toggle-btn:hover {
+    background-color: #e8f4fd !important;
+    transform: scale(1.05);
 }

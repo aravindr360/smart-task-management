@@ -2,15 +2,13 @@ const API_URL = "http://localhost:8080/tasks";
 
 window.onload = loadTasks;
 
-function loadTasks(){
+function loadTasks() {
 
     fetch(API_URL)
         .then(response => response.json())
         .then(tasks => {
 
-            const tableBody =
-                document.getElementById("taskTableBody");
-
+            const tableBody = document.getElementById("taskTableBody");
             tableBody.innerHTML = "";
 
             tasks.forEach(task => {
@@ -20,82 +18,69 @@ function loadTasks(){
                     <td>${task.id}</td>
                     <td>${task.title}</td>
                     <td>${task.description}</td>
-                    <td>${task.priority}</td>
-                    <td>${task.status}</td>
+                    <td><span class="badge badge-${task.priority.toLowerCase()}">${task.priority}</span></td>
 
                     <td>
-                        <button onclick="editTask(${task.id},
-                        '${task.title}',
-                        '${task.description}',
-                        '${task.priority}',
-                        '${task.status}')">
-
-                        Edit
+                        <button class="status-toggle-btn" onclick="toggleTaskStatus(${task.id}, '${task.status}', '${task.title}', '${task.description}', '${task.priority}')">
+                            ${task.status === 'Completed' ? '✅ Completed' : '⏳ Pending'}
                         </button>
+                    </td>
 
+                    <td>
+                        <button onclick="editTask(${task.id}, '${task.title}', '${task.description}', '${task.priority}', '${task.status}')">
+                            Edit
+                        </button>
                         <button onclick="deleteTask(${task.id})">
-                        Delete
+                            Delete
                         </button>
                     </td>
                 </tr>
                 `;
             });
-
         });
 }
-function saveTask(){
 
-    const id =
-        document.getElementById("taskId").value;
+function saveTask() {
+
+    const id = document.getElementById("taskId").value;
 
     const task = {
-
-        title:
-        document.getElementById("title").value,
-
-        description:
-        document.getElementById("description").value,
-
-        priority:
-        document.getElementById("priority").value,
-
-        status:
-        document.getElementById("status").value
+        title: document.getElementById("title").value,
+        description: document.getElementById("description").value,
+        priority: document.getElementById("priority").value,
+        status: document.getElementById("status").value
     };
 
-    // 📍 PUSH STEP 3 HERE (Validation / The Bouncer)
     if (task.title.trim() === "") {
         alert("Title is required");
-        return; // Stops the function immediately
+        return;
     }
 
-    if(id){
+    if (id) {
 
-        fetch(`${API_URL}/${id}`,{
-            method:"PUT",
-            headers:{
-                "Content-Type":"application/json"
+        fetch(`${API_URL}/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
             },
-            body:JSON.stringify(task)
+            body: JSON.stringify(task)
         })
             .then(() => {
-                // 📍 PUSH STEP 2 (Update Message) HERE
                 alert("Task updated successfully!");
                 clearForm();
                 loadTasks();
             });
 
-    }else{
+    } else {
 
-        fetch(API_URL,{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
+        fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
             },
-            body:JSON.stringify(task)
+            body: JSON.stringify(task)
         })
             .then(() => {
-                // 📍 PUSH STEP 2 (Save Message) HERE
                 alert("Task saved successfully!");
                 clearForm();
                 loadTasks();
@@ -103,21 +88,12 @@ function saveTask(){
     }
 }
 
-function editTask(
-    id,title,description,priority,status){
-
-    document.getElementById("taskId").value=id;
-
-    document.getElementById("title").value=title;
-
-    document.getElementById("description").value=
-        description;
-
-    document.getElementById("priority").value=
-        priority;
-
-    document.getElementById("status").value=
-        status;
+function editTask(id, title, description, priority, status) {
+    document.getElementById("taskId").value = id;
+    document.getElementById("title").value = title;
+    document.getElementById("description").value = description;
+    document.getElementById("priority").value = priority;
+    document.getElementById("status").value = status;
 }
 
 function deleteTask(id) {
@@ -129,11 +105,32 @@ function deleteTask(id) {
     }
 }
 
-function clearForm(){
+// ✅ NEW: Toggle status between Pending and Completed in one click
+function toggleTaskStatus(id, currentStatus, title, description, priority) {
 
-    document.getElementById("taskId").value="";
+    const newStatus = (currentStatus === "Pending") ? "Completed" : "Pending";
 
-    document.getElementById("title").value="";
+    const updatedTask = {
+        title: title,
+        description: description,
+        priority: priority,
+        status: newStatus
+    };
 
-    document.getElementById("description").value="";
+    fetch(`${API_URL}/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedTask)
+    })
+        .then(() => {
+            loadTasks(); // Reload table with updated status
+        });
+}
+
+function clearForm() {
+    document.getElementById("taskId").value = "";
+    document.getElementById("title").value = "";
+    document.getElementById("description").value = "";
 }
