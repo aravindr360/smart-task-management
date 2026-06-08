@@ -131,6 +131,8 @@ smart-task-management/
 
 ## 📸 Screenshots
 
+<img width="1468" height="298" alt="image" src="https://github.com/user-attachments/assets/7a146716-71b0-4957-9d5f-509dffdff570" />
+
 
 
 ---
